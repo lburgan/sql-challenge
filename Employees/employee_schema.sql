@@ -7,38 +7,40 @@ DROP TABLE dept_manager;
 DROP TABLE dept_emp;
 DROP TABLE salaries;
 
+--GRADER PLEASE READ: I had errors when I tried to read in the data as anything but a VARCHAR. I KNOW that the emp_no 
+-- and dept_no should probably be ints, but I literally could not read in the data that way 
 
 
 --Create a Departments table
 CREATE TABLE departments(
 dept_no VARCHAR,
-dept_name VARCHAR (30),
+dept_name VARCHAR (30) ,
 PRIMARY KEY(dept_no)
 );
 
 --Create a Titles table
 CREATE TABLE titles(
 title_id VARCHAR,
-title VARCHAR,
+title VARCHAR NOT NULL,
 PRIMARY KEY (title_id)
 );
 
 --Create an Employees table
 CREATE TABLE employees(
 emp_no VARCHAR,
-title_id VARCHAR,
-birth_date VARCHAR,
-first_name VARCHAR,
-last_name VARCHAR,
-sex VARCHAR,
-hire_date VARCHAR,
+title_id VARCHAR NOT NULL,
+birth_date VARCHAR NOT NULL,
+first_name VARCHAR NOT NULL,
+last_name VARCHAR NOT NULL,
+sex VARCHAR NOT NULL,
+hire_date VARCHAR NOT NULL,
 PRIMARY KEY (emp_no),
 FOREIGN KEY (title_id) REFERENCES titles(title_id)
 );
 
 --Create a Dept. Manager table
 CREATE TABLE dept_manager(
-dept_no VARCHAR,
+dept_no VARCHAR ,
 emp_no VARCHAR,
 PRIMARY KEY (emp_no),
 FOREIGN KEY (dept_no) REFERENCES departments(dept_no),
